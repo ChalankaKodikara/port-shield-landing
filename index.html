@@ -1,157 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portshield | Coming Soon</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portshield | Coming Soon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
 
-<style>
+    <style>
+        :root {
+            --teal: #00a7c4;
+            --light-teal: #00d4ff;
+            --bg1: #1a3c5a;
+            --bg2: #11293f;
+            --bg3: #0c1b2a;
+            --white: #ffffff;
+        }
 
-:root {
-    --primary-blue: #0d2f4f;
-    --secondary-blue: #123d63;
-    --teal: #00a7c4;
-    --light-teal: #00d4ff;
-    --bg-top: #16344f;
-    --bg-mid: #0f2438;
-    --bg-bottom: #0c1b2a;
-    --white: #ffffff;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3));
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+            color: var(--white);
+            overflow: hidden;
+        }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bottom) 100%);
-    color: var(--white);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-    padding: 20px;
-}
+        /* Animated background */
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
 
-.container {
-    max-width: 900px;
-    width: 100%;
-}
+            50% {
+                background-position: 100% 50%;
+            }
 
-.logo img {
-    width: 240px;
-    max-width: 80%;
-    margin-bottom: 30px;
-}
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-.coming {
-    font-size: 18px;
-    letter-spacing: 4px;
-    color: var(--teal);
-    margin-bottom: 15px;
-}
+        /* ================= PRELOADER ================= */
 
-.title {
-    font-size: 80px;
-    font-weight: 900;
-    line-height: 1.1;
-    background: linear-gradient(90deg, var(--teal), var(--light-teal));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 15px;
-}
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #0c1b2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
 
-.subtitle {
-    font-size: 22px;
-    letter-spacing: 6px;
-    color: #a7c9e4;
-    margin-bottom: 25px;
-}
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-top: 5px solid var(--teal);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
 
-.description {
-    font-size: 16px;
-    color: #d6e6f5;
-    line-height: 1.7;
-    max-width: 600px;
-    margin: auto;
-}
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
-/* Glow effect */
-.title {
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-}
+        /* ================= MAIN CONTENT ================= */
 
-/* ================= Responsive ================= */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
 
-@media (max-width: 992px) {
-    .title {
-        font-size: 60px;
-    }
-}
+        .container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-@media (max-width: 768px) {
-    .title {
-        font-size: 48px;
-    }
+        .logo img {
+            width: 240px;
+            max-width: 80%;
+            margin-bottom: 30px;
+            animation: floatLogo 4s ease-in-out infinite;
+        }
 
-    .subtitle {
-        font-size: 18px;
-        letter-spacing: 3px;
-    }
+        @keyframes floatLogo {
 
-    .coming {
-        font-size: 15px;
-    }
-}
+            0%,
+            100% {
+                transform: translateY(0);
+            }
 
-@media (max-width: 480px) {
-    .title {
-        font-size: 36px;
-    }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
 
-    .subtitle {
-        font-size: 14px;
-        letter-spacing: 2px;
-    }
+        .coming {
+            letter-spacing: 4px;
+            color: var(--teal);
+            margin-bottom: 10px;
+            animation: fadeInUp 1.2s ease forwards;
+        }
 
-    .description {
-        font-size: 14px;
-    }
+        .title {
+            font-size: 80px;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--teal), var(--light-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+            margin-bottom: 15px;
+            animation: fadeInUp 1.5s ease forwards;
+        }
 
-    .logo img {
-        width: 180px;
-    }
-}
+        .subtitle {
+            font-size: 22px;
+            letter-spacing: 6px;
+            color: #a7c9e4;
+            margin-bottom: 25px;
+            animation: fadeInUp 1.8s ease forwards;
+        }
 
-</style>
+        .description {
+            font-size: 16px;
+            color: #d6e6f5;
+            max-width: 600px;
+            line-height: 1.7;
+            animation: fadeInUp 2.1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 48px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+                letter-spacing: 3px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 34px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .logo img {
+                width: 180px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
-
-    <div class="logo">
-        <img src="logo.png" alt="Portshield Logo">
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="spinner"></div>
     </div>
 
-    <div class="coming">COMING SOON</div>
+    <!-- Main Content -->
+    <div class="container" id="mainContent">
 
-    <div class="title">STAY TUNED</div>
+        <div class="logo">
+            <img src="logo.png" alt="Portshield Logo">
+        </div>
 
-    <div class="subtitle">FIRST OUT OF BEST</div>
+        <div class="coming">COMING SOON</div>
 
-    <p class="description">
-        Portshield is preparing something powerful.
-        A new era of professional protection, security, and reliability is on the way.
-        Stay connected and be ready for the launch.
-    </p>
+        <div class="title">STAY TUNED</div>
 
-</div>
+        <div class="subtitle">FIRST OUT OF BEST</div>
+
+        <p class="description">
+            Portshield is preparing something powerful.
+            A new era of professional protection, security, and reliability is on the way.
+            Stay connected and be ready for the launch.
+        </p>
+
+    </div>
+
+    <script>
+        /* Loader animation */
+        window.addEventListener("load", function () {
+            const loader = document.getElementById("loader");
+            const content = document.getElementById("mainContent");
+
+            setTimeout(() => {
+                loader.style.display = "none";
+                content.classList.add("show");
+            }, 1200); // loader duration
+        });
+    </script>
 
 </body>
+
 </html>
