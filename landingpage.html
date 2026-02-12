@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portshield | Coming Soon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --primary-blue: #0d2f4f;
+    --secondary-blue: #123d63;
+    --teal: #00a7c4;
+    --light-teal: #00d4ff;
+    --bg-top: #16344f;
+    --bg-mid: #0f2438;
+    --bg-bottom: #0c1b2a;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bottom) 100%);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+}
+
+.logo img {
+    width: 240px;
+    max-width: 80%;
+    margin-bottom: 30px;
+}
+
+.coming {
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: var(--teal);
+    margin-bottom: 15px;
+}
+
+.title {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(90deg, var(--teal), var(--light-teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 22px;
+    letter-spacing: 6px;
+    color: #a7c9e4;
+    margin-bottom: 25px;
+}
+
+.description {
+    font-size: 16px;
+    color: #d6e6f5;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Glow effect */
+.title {
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 992px) {
+    .title {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 48px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        letter-spacing: 3px;
+    }
+
+    .coming {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 36px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .logo img {
+        width: 180px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <img src="logo.png" alt="Portshield Logo">
+    </div>
+
+    <div class="coming">COMING SOON</div>
+
+    <div class="title">STAY TUNED</div>
+
+    <div class="subtitle">FIRST OUT OF BEST</div>
+
+    <p class="description">
+        Portshield is preparing something powerful.
+        A new era of professional protection, security, and reliability is on the way.
+        Stay connected and be ready for the launch.
+    </p>
+
+</div>
+
+</body>
+</html>
